@@ -29,6 +29,7 @@
         </dependency>
     </dependencies>
     
+https://stackoverflow.com/questions/15798936/creating-two-executable-jars-using-maven-assembly-plugin    
     <build>
         <plugins>
             <plugin>

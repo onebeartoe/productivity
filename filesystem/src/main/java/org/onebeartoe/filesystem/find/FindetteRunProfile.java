@@ -13,5 +13,5 @@ public class FindetteRunProfile
     public enum RunMode
     {
         SHOW_FILENAMES_WITH_SPECIAL_CHARACTERS,
-    }            
+    }
 }
