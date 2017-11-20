@@ -2,7 +2,6 @@
 package org.onebeartoe.filesystem.move;
 
 import java.io.File;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,77 +11,85 @@ public class MoveService
 {
     private int renameFiles(MovetteRunProfile runProfile)
     {
-        char invalid = runProfile.specialCharTarget;
-        
         int count = 0;
-        if( Character.isDigit(invalid) || Character.isLetter(invalid) || invalid == '.' || invalid == '-') 
+
+        char invalidChar = runProfile.specialCharTarget;
+        File sourceDir = new File(runProfile.inpath);
+
+        if(!sourceDir.exists()) 
         {
-            String message = "This program will only remove non-alphanumeric chars; nor will it remove the '.' or '-' chars";
-            String title = "No files were renamed";
-            
-            System.err.println(title + " - " + message);
-            
-            throw new IllegalArgumentException(message);
+            throw new IllegalArgumentException("The input path does not exist: " + runProfile.inpath);
         }
-        else 
+
+        File[] children = sourceDir.listFiles();
+
+        for(File file : children) 
         {
-            char inval_char = runProfile.specialCharTarget;
-            File sourceDir = new File(runProfile.inpath);
+            String searchTarget = String.valueOf(invalidChar);
 
-            if(!sourceDir.exists()) 
+            if( file.getName().contains(searchTarget) ) 
             {
-                    return count;
-            }
+                String newName = file.getName().replaceAll(searchTarget, "");
 
-            File[] children = sourceDir.listFiles();
+                File newFile = new File(file.getParent(), newName);
 
-            for(File file : children) 
-            {
-                String name = file.getName();
-                StringBuilder buff = new StringBuilder(name);
-                int i = buff.indexOf(inval_char + "");
-
-                if(i != -1) 
+                switch (runProfile.mode)
                 {
-                    while(i != -1) 
+                    case JUST_PRINT_RENAME_COMMANDS:
                     {
-                        buff.deleteCharAt(i);
-                        i = buff.indexOf(inval_char + "");				
-                    }
-                    name = buff.toString();
+                        String moveCommand = "mv " + file.toString() + " " + newFile.toString();
+                        System.out.println(moveCommand);                            
 
-                    boolean actuallyPerformMove = false;
-                    
-                    if(actuallyPerformMove)
+                        break;
+                    }
+                    case RENAME_SPECIAL_CHARACTER_FILENAMES:
                     {
-                        File new_file = new File(file.getParent(), name);
-                        file.renameTo(new_file);                        
-                    }
+                        System.out.println("Processing: " + newFile.toString() );
+                                                
+                        if( newFile.exists() )
+                        {
+                            String message = "A file already exists with the rename: " + newFile.getAbsolutePath();
 
-                    count++;
+                            throw new IllegalArgumentException(message);
+                        }
+                        else
+                        {
+                            file.renameTo(newFile);
+                        }
+
+                        break;
+                    }
+                    default:
+                    {
+                        throw new AssertionError("The run mode is not set.");
+                    }
                 }
+
+                count++;
             }
         }
-        System.out.println(count + " files renamed.");
-        System.out.println("Done.");
 
         return count;
     }
     
     public void serviceRequest(MovetteRunProfile runProfile)
     {
-        switch (runProfile.mode)
+        char invalid = runProfile.specialCharTarget;
+        
+        int count = 0;
+        if( Character.isDigit(invalid) || Character.isLetter(invalid) || invalid == '.' || invalid == '-') 
         {
-            case RENAME_SPECIAL_CHARACTER_FILENAMES:
-            {
-                renameFiles(runProfile);
-
-                break;
-            }
-            default:
-            {
-                throw new AssertionError();
-            }
+            String title = "No files were renamed - ";
+            String message = title + "This program will only remove non-alphanumeric chars; nor will it remove the '.' or '-' chars";
+            
+            throw new IllegalArgumentException(message);
+        }
+        else 
+        {
+            renameFiles(runProfile);
+                    
+            System.out.println(count + " files renamed.");
+            System.out.println("Done.");
         }
     }
 }

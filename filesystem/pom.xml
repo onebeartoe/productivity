@@ -29,31 +29,60 @@
         </dependency>
     </dependencies>
     
-https://stackoverflow.com/questions/15798936/creating-two-executable-jars-using-maven-assembly-plugin    
+    <!-- Thank you Stackoverflow!
+            https://stackoverflow.com/questions/15798936/creating-two-executable-jars-using-maven-assembly-plugin
+    -->
     <build>
         <plugins>
+
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>org.onebeartoe.filesystem.find.Findette</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
+                <version>2.4</version>
                 <executions>
                     <execution>
-                        <id>make-assembly</id>   <!-- this is used for inheritance merges -->
-                        <phase>package</phase>   <!-- bind to the packaging phase -->
+                        <id>build-publisher</id>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <archive>
+                                <manifest>
+                                    <mainClass>org.onebeartoe.filesystem.find.Findette</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <finalName>${project.artifactId}-findette</finalName>
+                        </configuration>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>build-logReader</id>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <archive>
+                                <manifest>
+                                    <mainClass>org.onebeartoe.filesystem.move.Movette</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <finalName>${project.artifactId}-movette</finalName>
+                        </configuration>
+                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>            
+            
+            
+                            
+
         </plugins>
     </build>    
 </project>
