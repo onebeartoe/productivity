@@ -25,7 +25,7 @@ public class CommandLineInterfaceApplet
         return new CommandLineInterfaceApplet();
     }
     
-    public void execute(String [] args)
+    public void execute(String [] args) throws Exception
     {
         Options options = buildOptions();
         
@@ -56,7 +56,7 @@ public class CommandLineInterfaceApplet
         }         
     }
     
-    public static void main(String [] args) throws IOException
+    public static void main(String [] args) throws IOException, Exception
     {
         CommandLineInterfaceApplet app = new CommandLineInterfaceApplet();
         app.execute(args);
