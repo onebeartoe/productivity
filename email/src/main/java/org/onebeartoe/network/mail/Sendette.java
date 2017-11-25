@@ -46,7 +46,7 @@ public class Sendette extends CommandLineInterfaceApplet
         return new SendetteService();
     }
     
-    public static void main(String [] args) throws IOException
+    public static void main(String [] args) throws IOException, Exception
     {
         CommandLineInterfaceApplet app = new Sendette();
         app.execute(args);
