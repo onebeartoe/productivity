@@ -4,7 +4,6 @@ package org.onebeartoe.filesystem.move;
 import java.io.File;
 
 /**
- *
  * @author Roberto Marquez
  */
 public class MoveService

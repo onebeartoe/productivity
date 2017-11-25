@@ -13,6 +13,7 @@
     <name>onebeartoe-productivity-apps</name>
 
     <modules>
+        <module>email</module>
         <module>filesystem</module>
     </modules>
 
