@@ -35,9 +35,15 @@ public class Sendette extends CommandLineInterfaceApplet
                                 .longOpt(SMTP_FORCE_PASSWORD)
                                 .build();
         
+        Option subject = Option.builder()
+                                .hasArg()
+                                .longOpt(SUBJECT)
+                                .build();
+        
         Options options = new Options();
         options.addOption(smtpPassword);
         options.addOption(to);
+        options.addOption(subject);
         
         return options;
     }    
@@ -66,7 +72,7 @@ public class Sendette extends CommandLineInterfaceApplet
         CommandLineParser parser = new DefaultParser();
         CommandLine cl = parser.parse(options, args);
 
-        String to = cl.getOptionValue(TO);
+        String to = cl.getOptionValue(TO);        
         String subject = cl.getOptionValue(SUBJECT, "Wonderful Subject");
         
         SendetteRunProfile runProfile = new SendetteRunProfile();
