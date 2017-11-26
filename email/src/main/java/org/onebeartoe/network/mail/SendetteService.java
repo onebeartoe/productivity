@@ -25,7 +25,9 @@ public class SendetteService extends AppletService
         pw = System.getenv(key);
         System.out.println("env pw: " + pw);
         
-        if(pw.equals("") && rp.forceSmtpPassword)
+        boolean blankPw = pw == null || pw.trim().equals("");
+        
+        if(blankPw && rp.forceSmtpPassword)
         {
             pw = rp.smtpPassword;
         }
@@ -37,7 +39,7 @@ public class SendetteService extends AppletService
         }            
         
         String to = "onebeartoe@gmail.com";
-        String subject = "calling beto from att";
+        String subject = rp.subject;
         String body = "real far far out body";
         
         AttSender sender = new AttSender(user, pw);
