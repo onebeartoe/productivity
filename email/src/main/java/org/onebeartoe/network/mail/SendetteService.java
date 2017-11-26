@@ -3,14 +3,18 @@ package org.onebeartoe.network.mail;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import org.onebeartoe.network.mail.Sendette.SendetteRunProfile;
 
 /**
  * @author Roberto Marquez
  */
 public class SendetteService extends AppletService
 {
-    public void serviceRequest(RunProfile runProfile) throws AddressException, MessagingException
+    public void serviceRequest(RunProfile runProfilee) throws AddressException, MessagingException
     {
+        // Alas, we have to cast.
+        SendetteRunProfile rp = (SendetteRunProfile) runProfilee;
+        
         String user = "duplicator-pi";
         
         // The password is looked up as an environment variable.
@@ -20,6 +24,11 @@ public class SendetteService extends AppletService
         
         pw = System.getenv(key);
         System.out.println("env pw: " + pw);
+        
+        if(pw.equals("") && rp.forceSmtpPassword)
+        {
+            pw = rp.smtpPassword;
+        }
         
         if( pw.trim().equals("") )
         {

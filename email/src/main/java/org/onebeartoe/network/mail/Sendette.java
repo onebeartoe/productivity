@@ -15,6 +15,8 @@ import org.apache.commons.cli.ParseException;
  */
 public class Sendette extends CommandLineInterfaceApplet
 {
+    private final String SMTP_FORCE_PASSWORD = "forceSmtpPassword";
+    private final String SMTP_PASSWORD = "smtpPassword";
     private final String SUBJECT = "subject";
     private final String TO = "to";
     
@@ -28,7 +30,13 @@ public class Sendette extends CommandLineInterfaceApplet
                         .desc("This is the email address of the recipient.")
                         .build();
         
+        Option smtpPassword = Option.builder()
+                                .hasArg()
+                                .longOpt(SMTP_PASSWORD)
+                                .build();
+        
         Options options = new Options();
+        options.addOption(smtpPassword);
         options.addOption(to);
         
         return options;
@@ -65,6 +73,12 @@ public class Sendette extends CommandLineInterfaceApplet
         runProfile.to = to;
         runProfile.subject = subject;
         
+        if( cl.hasOption(SMTP_FORCE_PASSWORD) )
+        {
+            runProfile.forceSmtpPassword = true;
+            runProfile.smtpPassword = cl.getOptionValue(SMTP_FORCE_PASSWORD);
+        }
+        
         List<String> remainingArgs = cl.getArgList();
         if(remainingArgs.size() > 0)
         {
@@ -78,5 +92,7 @@ public class Sendette extends CommandLineInterfaceApplet
     {
         String subject;
         String to;
+        boolean forceSmtpPassword;
+        String smtpPassword;
     }
 }
