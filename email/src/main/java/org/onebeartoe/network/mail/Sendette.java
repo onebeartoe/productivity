@@ -74,16 +74,47 @@ public class Sendette extends CommandLineInterfaceApplet
 
         String to = cl.getOptionValue(TO);        
         String subject = cl.getOptionValue(SUBJECT, "Wonderful Subject");
-        
+
         SendetteRunProfile runProfile = new SendetteRunProfile();
-        runProfile.to = to;
-        runProfile.subject = subject;
         
-        if( cl.hasOption(SMTP_FORCE_PASSWORD) )
+        String smtpUserKey = "SMTP_USER";
+        String smtpUser = System.getenv(smtpUserKey);
+        
+
+        
+
+        // The password is looked up as an environment variable.
+        String key = "SMTP_PASSWORD";
+        String pw = System.getProperty(key, "");
+        System.out.println("pw: " + pw);
+        
+        pw = System.getenv(key);
+        System.out.println("env pw: " + pw);
+
+        boolean blankPw = pw == null || pw.trim().equals("");
+        
+        if(blankPw && cl.hasOption(SMTP_FORCE_PASSWORD))
         {
             runProfile.forceSmtpPassword = true;
             runProfile.smtpPassword = cl.getOptionValue(SMTP_FORCE_PASSWORD);
         }
+        
+        if(smtpUser == null || smtpUser.trim().isEmpty() )
+        {
+            throw new IllegalArgumentException("The smtp user name is not set");
+        }
+        
+        if(pw == null || pw.trim().isEmpty() )
+        {
+            throw new IllegalArgumentException("The password is blank.  Try setting the " 
+                                + key + " environment variable.");
+        }        
+                
+        runProfile.to = to;
+        runProfile.subject = subject;
+        runProfile.smtpUser = smtpUser;
+        runProfile.smtpPassword = pw;
+
         
         List<String> remainingArgs = cl.getArgList();
         if(remainingArgs.size() > 0)
@@ -99,6 +130,7 @@ public class Sendette extends CommandLineInterfaceApplet
         String subject;
         String to;
         boolean forceSmtpPassword;
+        String smtpUser;
         String smtpPassword;
     }
 }

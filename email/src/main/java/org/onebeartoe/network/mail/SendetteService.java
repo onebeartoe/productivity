@@ -15,28 +15,9 @@ public class SendetteService extends AppletService
         // Alas, we have to cast.
         SendetteRunProfile rp = (SendetteRunProfile) runProfilee;
         
-        String user = "duplicator-pi";
+        String user = rp.smtpUser;
         
-        // The password is looked up as an environment variable.
-        String key = "SMTP_PASSWORD";
-        String pw = System.getProperty(key, "");
-        System.out.println("pw: " + pw);
-        
-        pw = System.getenv(key);
-        System.out.println("env pw: " + pw);
-        
-        boolean blankPw = pw == null || pw.trim().equals("");
-        
-        if(blankPw && rp.forceSmtpPassword)
-        {
-            pw = rp.smtpPassword;
-        }
-        
-        if( pw.trim().equals("") )
-        {
-            throw new IllegalArgumentException("The password is blank.  Try setting the " 
-                                + key + " environment variable.");
-        }            
+        String pw = rp.smtpPassword;
         
         String to = "onebeartoe@gmail.com";
         String subject = rp.subject;
