@@ -1,6 +1,7 @@
 
 package org.onebeartoe.network.mail;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import org.apache.commons.cli.CommandLine;
@@ -15,14 +16,19 @@ import org.apache.commons.cli.ParseException;
  */
 public class Sendette extends CommandLineInterfaceApplet
 {
+    private final String ATTACHMENT = "attachment";
     private final String SMTP_FORCE_PASSWORD = "forceSmtpPassword";
-//    private final String SMTP_PASSWORD = "smtpPassword";
     private final String SUBJECT = "subject";
     private final String TO = "to";
     
     @Override
     public Options buildOptions()
     {
+        Option attachment = Option.builder()
+                                .hasArg()
+                                .longOpt(ATTACHMENT)
+                                .build();
+        
         Option to = Option.builder()
                         .required()
                         .hasArg()
@@ -41,6 +47,7 @@ public class Sendette extends CommandLineInterfaceApplet
                                 .build();
         
         Options options = new Options();
+        options.addOption(attachment);
         options.addOption(smtpPassword);
         options.addOption(to);
         options.addOption(subject);
@@ -79,9 +86,6 @@ public class Sendette extends CommandLineInterfaceApplet
         
         String smtpUserKey = "SMTP_USER";
         String smtpUser = System.getenv(smtpUserKey);
-        
-
-        
 
         // The password is looked up as an environment variable.
         String key = "SMTP_PASSWORD";
@@ -97,6 +101,13 @@ public class Sendette extends CommandLineInterfaceApplet
         {
             runProfile.forceSmtpPassword = true;
             runProfile.smtpPassword = cl.getOptionValue(SMTP_FORCE_PASSWORD);
+        }
+        
+        if( cl.hasOption(ATTACHMENT) )
+        {
+            String path = cl.getOptionValue(ATTACHMENT);
+            File attachement = new File(path);
+            runProfile.attachment = attachement;
         }
         
         if(smtpUser == null || smtpUser.trim().isEmpty() )
@@ -127,6 +138,7 @@ public class Sendette extends CommandLineInterfaceApplet
     
     class SendetteRunProfile extends RunProfile
     {
+        File attachment;
         String subject;
         String to;
         boolean forceSmtpPassword;

@@ -1,6 +1,7 @@
 
 package org.onebeartoe.network.mail;
 
+import java.io.File;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import org.onebeartoe.network.mail.Sendette.SendetteRunProfile;
@@ -19,12 +20,13 @@ public class SendetteService extends AppletService
         
         String pw = rp.smtpPassword;
         
+        File attachement = rp.attachment;
         String to = "onebeartoe@gmail.com";
         String subject = rp.subject;
         String body = "real far far out body";
         
-        AttSender sender = new AttSender(user, pw);
-        sender.sendMail(subject, body, to);        
+        AttSender sender = new AttSender(user, pw);        
+        sender.sendMail(subject, body, to, attachement);
         
         System.out.println("The sendette service is great!");
     }
