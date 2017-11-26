@@ -16,7 +16,7 @@ import org.apache.commons.cli.ParseException;
 public class Sendette extends CommandLineInterfaceApplet
 {
     private final String SMTP_FORCE_PASSWORD = "forceSmtpPassword";
-    private final String SMTP_PASSWORD = "smtpPassword";
+//    private final String SMTP_PASSWORD = "smtpPassword";
     private final String SUBJECT = "subject";
     private final String TO = "to";
     
@@ -32,7 +32,7 @@ public class Sendette extends CommandLineInterfaceApplet
         
         Option smtpPassword = Option.builder()
                                 .hasArg()
-                                .longOpt(SMTP_PASSWORD)
+                                .longOpt(SMTP_FORCE_PASSWORD)
                                 .build();
         
         Options options = new Options();
