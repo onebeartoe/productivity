@@ -112,7 +112,7 @@ public class Sendette extends CommandLineInterfaceApplet
         if(blankPw && cl.hasOption(SMTP_FORCE_PASSWORD))
         {
             runProfile.forceSmtpPassword = true;
-            runProfile.smtpPassword = cl.getOptionValue(SMTP_FORCE_PASSWORD);
+            pw = cl.getOptionValue(SMTP_FORCE_PASSWORD);
         }
         
         if( cl.hasOption(ATTACHMENT) )
@@ -122,6 +122,7 @@ public class Sendette extends CommandLineInterfaceApplet
             runProfile.attachment = attachement;
         }
         
+        // next are all the validation checks for required fields
         if(smtpUser == null || smtpUser.trim().isEmpty() )
         {
             throw new IllegalArgumentException("The smtp user name is not set");
