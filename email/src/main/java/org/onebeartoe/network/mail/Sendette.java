@@ -17,6 +17,7 @@ import org.apache.commons.cli.ParseException;
 public class Sendette extends CommandLineInterfaceApplet
 {
     private final String ATTACHMENT = "attachment";
+    private final String MESSAGE_TEXT = "messageText";
     private final String SMTP_FORCE_PASSWORD = "forceSmtpPassword";
     private final String SMTP_USER = "smtpUser";
     private final String SUBJECT = "subject";
@@ -29,6 +30,12 @@ public class Sendette extends CommandLineInterfaceApplet
                                 .hasArg()
                                 .longOpt(ATTACHMENT)
                                 .build();
+        
+        Option messageText = Option.builder()
+                                    .hasArg()
+                                    .longOpt(MESSAGE_TEXT)
+                                    .required()
+                                    .build();
         
         Option to = Option.builder()
                         .required()
@@ -54,6 +61,7 @@ public class Sendette extends CommandLineInterfaceApplet
         
         Options options = new Options();
         options.addOption(attachment);
+        options.addOption(messageText);
         options.addOption(smtpPassword);
         options.addOption(smtpUser);
         options.addOption(to);
@@ -115,6 +123,13 @@ public class Sendette extends CommandLineInterfaceApplet
             pw = cl.getOptionValue(SMTP_FORCE_PASSWORD);
         }
         
+        String messageText = cl.getOptionValue(MESSAGE_TEXT);
+        boolean blankMessageText = messageText == null || messageText.trim().isEmpty();
+        if(blankMessageText)
+        {
+            messageText = "The message text is blank.";
+        }
+        
         if( cl.hasOption(ATTACHMENT) )
         {
             String path = cl.getOptionValue(ATTACHMENT);
@@ -134,6 +149,7 @@ public class Sendette extends CommandLineInterfaceApplet
                                 + key + " environment variable.");
         }        
                 
+        runProfile.messageText = messageText;
         runProfile.to = to;
         runProfile.subject = subject;
         runProfile.smtpUser = smtpUser;
@@ -152,6 +168,7 @@ public class Sendette extends CommandLineInterfaceApplet
     class SendetteRunProfile extends RunProfile
     {
         File attachment;
+        String messageText;
         String subject;
         String to;
         boolean forceSmtpPassword;

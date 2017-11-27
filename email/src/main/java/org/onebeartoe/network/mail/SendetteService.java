@@ -21,7 +21,7 @@ public class SendetteService extends AppletService
         String pw = rp.smtpPassword;
         
         File attachement = rp.attachment;
-        String to = "onebeartoe@gmail.com";
+        String to = rp.to;
         String subject = rp.subject;
         String body = "real far far out body";
         
