@@ -18,6 +18,7 @@ public class Sendette extends CommandLineInterfaceApplet
 {
     private final String ATTACHMENT = "attachment";
     private final String SMTP_FORCE_PASSWORD = "forceSmtpPassword";
+    private final String SMTP_USER = "smtpUser";
     private final String SUBJECT = "subject";
     private final String TO = "to";
     
@@ -41,6 +42,11 @@ public class Sendette extends CommandLineInterfaceApplet
                                 .longOpt(SMTP_FORCE_PASSWORD)
                                 .build();
         
+        Option smtpUser = Option.builder()
+                                .hasArg()
+                                .longOpt(SMTP_USER)
+                                .build();
+        
         Option subject = Option.builder()
                                 .hasArg()
                                 .longOpt(SUBJECT)
@@ -49,6 +55,7 @@ public class Sendette extends CommandLineInterfaceApplet
         Options options = new Options();
         options.addOption(attachment);
         options.addOption(smtpPassword);
+        options.addOption(smtpUser);
         options.addOption(to);
         options.addOption(subject);
         
@@ -86,6 +93,11 @@ public class Sendette extends CommandLineInterfaceApplet
         
         String smtpUserKey = "SMTP_USER";
         String smtpUser = System.getenv(smtpUserKey);
+        boolean blankUser = smtpUser == null || smtpUser.trim().isEmpty();
+        if(blankUser && cl.hasOption(SMTP_USER))
+        {
+            smtpUser = cl.getOptionValue(SMTP_USER);
+        }
 
         // The password is looked up as an environment variable.
         String key = "SMTP_PASSWORD";
