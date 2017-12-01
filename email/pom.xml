@@ -9,9 +9,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     
-    <artifactId>filesystem</artifactId>
+    <artifactId>email</artifactId>
 
-    <name>onebeartoe-productivity-filesystem</name>
+    <name>onebeartoe-productivity-email</name>
             
     <packaging>jar</packaging>
     
@@ -20,6 +20,12 @@
             <groupId>commons-cli</groupId>
             <artifactId>commons-cli</artifactId>
             <version>1.4</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.onebeartoe</groupId>
+            <artifactId>network</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         
         <dependency>
@@ -44,13 +50,13 @@
                             <appendAssemblyId>false</appendAssemblyId>
                             <archive>
                                 <manifest>
-                                    <mainClass>org.onebeartoe.filesystem.find.Findette</mainClass>
+                                    <mainClass>org.onebeartoe.network.mail.Sendette</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            <finalName>${project.artifactId}-findette</finalName>
+                            <finalName>${project.artifactId}-sendette</finalName>
                         </configuration>
                         <phase>package</phase>
                         <goals>
