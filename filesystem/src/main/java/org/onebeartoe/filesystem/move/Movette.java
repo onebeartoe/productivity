@@ -18,13 +18,11 @@ import org.onebeartoe.application.duration.DurationService;
  */
 public class Movette
 {
-    private static final String INPUT_DIRECTORY = "inputDirectory";
+    private final String INPUT_DIRECTORY = "inputDirectory";
     
     private final String JUST_PRINT_RENAME_COMMANDS = "justPrintRenameCommands";
     
-    private static final String REMOVE_SPECIAL_CHARACTER_FILENAMES = "removeSpecialCharacterFilenames";
-        
-    private final String REPLACEMENT_STRING = "replacmentString";
+    private final String REMOVE_SPECIAL_CHARACTER_FILENAMES = "removeSpecialCharacterFilenames";
 
     private Options buildOptions()
     {
@@ -57,12 +55,12 @@ public class Movette
     
     public static void main(String [] args) throws IOException
     {
-        Movette findette = new Movette();
-        Options options = findette.buildOptions();
+        Movette movette = new Movette();
+        Options options = movette.buildOptions();
         
         try
         {
-            MovetteRunProfile runProfile = findette.parseRunProfile(args, options);
+            MovetteRunProfile runProfile = movette.parseRunProfile(args, options);
 
             Instant start = Instant.now();
 
@@ -80,8 +78,8 @@ public class Movette
         {
             uoe.printStackTrace();
             
-            String usage = "\n" + "java -jar findette.jar " + "--" + INPUT_DIRECTORY + " <input-directory>" + 
-                           " --" + REMOVE_SPECIAL_CHARACTER_FILENAMES + " <special-char>" + "\n";
+            String usage = "\n" + "java -jar findette.jar " + "--" + movette.INPUT_DIRECTORY + " <input-directory>" + 
+                           " --" + movette.REMOVE_SPECIAL_CHARACTER_FILENAMES + " <special-char>" + "\n";
             
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp(usage, options);
