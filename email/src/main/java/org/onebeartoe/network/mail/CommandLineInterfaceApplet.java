@@ -20,10 +20,11 @@ public class CommandLineInterfaceApplet
         return new Options();
     }
     
-    public CommandLineInterfaceApplet getApplet()
-    {
-        return new CommandLineInterfaceApplet();
-    }
+//TODO: is this needed?    
+//    public CommandLineInterfaceApplet getApplet()
+//    {
+//        return new CommandLineInterfaceApplet();
+//    }
     
     public void execute(String [] args) throws Exception
     {

@@ -4,7 +4,7 @@ package org.onebeartoe.network.mail;
 /**
  * @author Roberto Marquez
  */
-class AppletService 
+public class AppletService 
 {
     public void serviceRequest(RunProfile runProfile) throws Exception
     {
