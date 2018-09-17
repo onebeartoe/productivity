@@ -13,7 +13,7 @@ import org.onebeartoe.application.duration.DurationService;
  */
 public class CommandLineInterfaceApplet 
 {
-    protected CommandLineInterfaceApplet applet;
+//    protected CommandLineInterfaceApplet applet;
     
     public Options buildOptions()
     {
@@ -50,7 +50,7 @@ public class CommandLineInterfaceApplet
         {
             uoe.printStackTrace();
             
-            String usage = applet.getUsage();
+            String usage = getUsage();
             
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp(usage, options);
