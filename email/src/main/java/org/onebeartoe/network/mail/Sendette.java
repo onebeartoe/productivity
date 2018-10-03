@@ -70,11 +70,11 @@ public class Sendette extends CommandLineInterfaceApplet
         return options;
     }    
     
-    @Override
-    public CommandLineInterfaceApplet getApplet()
-    {
-        return new Sendette();
-    }
+//    @Override
+//    public CommandLineInterfaceApplet getApplet()
+//    {
+//        return new Sendette();
+//    }
     
     @Override
     protected AppletService getService() 

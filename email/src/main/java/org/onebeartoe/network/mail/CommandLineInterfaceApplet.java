@@ -13,17 +13,18 @@ import org.onebeartoe.application.duration.DurationService;
  */
 public class CommandLineInterfaceApplet 
 {
-    protected CommandLineInterfaceApplet applet;
+//    protected CommandLineInterfaceApplet applet;
     
     public Options buildOptions()
     {
         return new Options();
     }
     
-    public CommandLineInterfaceApplet getApplet()
-    {
-        return new CommandLineInterfaceApplet();
-    }
+//TODO: is this needed?    
+//    public CommandLineInterfaceApplet getApplet()
+//    {
+//        return new CommandLineInterfaceApplet();
+//    }
     
     public void execute(String [] args) throws Exception
     {
@@ -49,7 +50,7 @@ public class CommandLineInterfaceApplet
         {
             uoe.printStackTrace();
             
-            String usage = applet.getUsage();
+            String usage = getUsage();
             
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp(usage, options);
