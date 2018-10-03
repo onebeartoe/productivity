@@ -14,6 +14,8 @@ import org.apache.commons.cli.ParseException;
 import org.onebeartoe.application.duration.DurationService;
 
 /**
+ * This application renames regular files to remove special characters.
+ * 
  * @author Roberto Marquez
  */
 public class Movette
