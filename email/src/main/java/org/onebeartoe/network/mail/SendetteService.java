@@ -1,6 +1,8 @@
 
 package org.onebeartoe.network.mail;
 
+import org.onebeartoe.application.AppletService;
+import org.onebeartoe.application.RunProfile;
 import java.io.File;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;

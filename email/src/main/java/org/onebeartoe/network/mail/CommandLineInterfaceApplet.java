@@ -1,6 +1,8 @@
 
 package org.onebeartoe.network.mail;
 
+import org.onebeartoe.application.AppletService;
+import org.onebeartoe.application.RunProfile;
 import java.io.IOException;
 import java.time.Instant;
 import org.apache.commons.cli.HelpFormatter;
