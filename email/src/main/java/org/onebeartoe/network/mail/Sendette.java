@@ -1,6 +1,7 @@
 
 package org.onebeartoe.network.mail;
 
+import org.onebeartoe.application.CommandLineInterfaceApplet;
 import org.onebeartoe.application.AppletService;
 import org.onebeartoe.application.RunProfile;
 import java.io.File;
