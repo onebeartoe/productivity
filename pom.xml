@@ -10,7 +10,7 @@
 
     <packaging>pom</packaging>
 
-    <name>onebeartoe-productivity-apps</name>
+    <name>onebeartoe-productivity</name>
 
     <modules>
         <module>email</module>
