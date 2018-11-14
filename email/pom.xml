@@ -34,7 +34,8 @@
             <version>1.0</version>
         </dependency>
     </dependencies>
-    
+
+<!--TODO: move this to oneweb-net -->        
     <!-- Thank you Stackoverflow!
             https://stackoverflow.com/questions/15798936/creating-two-executable-jars-using-maven-assembly-plugin
     -->
@@ -63,6 +64,7 @@
                             <goal>single</goal>
                         </goals>
                     </execution>
+<!--                    
                     <execution>
                         <id>build-logReader</id>
                         <configuration>
@@ -82,6 +84,7 @@
                             <goal>single</goal>
                         </goals>
                     </execution>
+-->                    
                 </executions>
             </plugin>
         </plugins>

@@ -35,5 +35,5 @@
                 <checksumPolicy>warn</checksumPolicy>
             </releases>
         </repository>
-    </repositories>    
+    </repositories>
 </project>
