@@ -14,7 +14,6 @@
 
     <modules>
 <!-- Move these to modules to the software-development-tools repository. -->
-        <module>email</module>
         <module>filesystem</module>
     </modules>
 
