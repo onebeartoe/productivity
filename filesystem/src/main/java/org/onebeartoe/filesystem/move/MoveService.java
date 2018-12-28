@@ -2,11 +2,13 @@
 package org.onebeartoe.filesystem.move;
 
 import java.io.File;
+import org.onebeartoe.application.AppletService;
+import org.onebeartoe.application.RunProfile;
 
 /**
  * @author Roberto Marquez
  */
-public class MoveService
+public class MoveService extends AppletService
 {
     private int renameFiles(MovetteRunProfile runProfile)
     {
@@ -53,7 +55,12 @@ public class MoveService
                         }
                         else
                         {
-                            file.renameTo(newFile);
+                            boolean renamed = file.renameTo(newFile);
+                            
+                            if(renamed)
+                            {
+                                count++;
+                            }
                         }
 
                         break;
@@ -63,17 +70,18 @@ public class MoveService
                         throw new AssertionError("The run mode is not set.");
                     }
                 }
-
-                count++;
             }
         }
 
         return count;
     }
     
-    public void serviceRequest(MovetteRunProfile runProfile)
+    @Override
+    public void serviceRequest(RunProfile runProfile)
     {
-        char invalid = runProfile.specialCharTarget;
+        MovetteRunProfile mrp = (MovetteRunProfile) runProfile;
+        
+        char invalid = mrp.specialCharTarget;
         
         int count = 0;
         if( Character.isDigit(invalid) || Character.isLetter(invalid) || invalid == '.' || invalid == '-') 
@@ -85,7 +93,7 @@ public class MoveService
         }
         else 
         {
-            renameFiles(runProfile);
+            renameFiles(mrp);
                     
             System.out.println(count + " files renamed.");
             System.out.println("Done.");

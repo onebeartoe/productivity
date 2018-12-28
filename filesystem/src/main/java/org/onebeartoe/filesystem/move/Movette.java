@@ -20,11 +20,11 @@ import org.onebeartoe.application.duration.DurationService;
  */
 public class Movette
 {
-    private final String INPUT_DIRECTORY = "inputDirectory";
+    private static final String INPUT_DIRECTORY = "inputDirectory";
     
-    private final String JUST_PRINT_RENAME_COMMANDS = "justPrintRenameCommands";
+    private static final String JUST_PRINT_RENAME_COMMANDS = "justPrintRenameCommands";
     
-    private final String REMOVE_SPECIAL_CHARACTER_FILENAMES = "removeSpecialCharacterFilenames";
+    private static final String REMOVE_SPECIAL_CHARACTER_FILENAMES = "removeSpecialCharacterFilenames";
 
     private Options buildOptions()
     {
@@ -55,7 +55,7 @@ public class Movette
         return options;
     }
     
-    public static void main(String [] args) throws IOException
+    public static void main(String [] args)
     {
         Movette movette = new Movette();
         Options options = movette.buildOptions();
@@ -114,10 +114,12 @@ public class Movette
         }
         
         List<String> remainingArgs = cl.getArgList();
-        if(remainingArgs.size() > 0)
+        
+        if( !remainingArgs.isEmpty() )
         {
             System.out.println("Remaining args:");
-            remainingArgs.forEach(a -> System.out.println(a));
+            
+            remainingArgs.forEach(System.out::println);
         }
         
         return runProfile;

@@ -1,14 +1,14 @@
 
 package org.onebeartoe.filesystem.move;
 
+import org.onebeartoe.application.RunProfile;
+
 /**
  * @author Roberto Marquez
  */
-public class MovetteRunProfile
+public class MovetteRunProfile extends RunProfile
 {
     public RunMode mode;
-    
-    
     
     public String inpath;
 
