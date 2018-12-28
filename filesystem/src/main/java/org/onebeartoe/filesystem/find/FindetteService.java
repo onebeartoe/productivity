@@ -7,6 +7,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.function.BiPredicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Stream;
 import org.onebeartoe.application.AppletService;
 import org.onebeartoe.application.RunProfile;
 
@@ -49,7 +52,9 @@ public class FindetteService extends AppletService
         BiPredicate<Path, BasicFileAttributes> matcher = (p, bfa) ->
                 ! p.getFileName().toString().matches(negatedAcceptedChars);
         
-        Files.find(dir, maxDepth, matcher)
-             .forEach(System.out::println);
+        try( Stream<Path> find = Files.find(dir, maxDepth, matcher) )
+        {    
+            find.forEach(System.out::println);
+        } 
     }
 }
