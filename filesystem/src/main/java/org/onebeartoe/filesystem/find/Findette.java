@@ -1,29 +1,26 @@
 
 package org.onebeartoe.filesystem.find;
 
-import java.io.IOException;
-import java.time.Instant;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.commons.cli.UnrecognizedOptionException;
-import org.onebeartoe.application.duration.DurationService;
+import org.onebeartoe.application.AppletService;
+import org.onebeartoe.application.CommandLineInterfaceApplet;
+import org.onebeartoe.application.RunProfile;
 
 /**
  * @author Roberto Marquez
  */
-public class Findette 
+public class Findette extends CommandLineInterfaceApplet
 {
-    private final String SPECIAL_CHARACTER_FILENAMES = "specialCharacterFilenames";
+    private static final String SPECIAL_CHARACTER_FILENAMES = "specialCharacterFilenames";
     
-    private Options buildOptions()
+    @Override
+    public Options buildOptions()
     {
         Option outfile = Option.builder()
                         .required(false)
@@ -37,39 +34,20 @@ public class Findette
         return options;
     }
     
-    public static void main(String [] args) throws IOException
+    @Override
+    protected AppletService getService() 
     {
-        Findette findette = new Findette();
-        Options options = findette.buildOptions();
-        
-        try
-        {
-            FindetteRunProfile runProfile = findette.parseRunProfile(args, options);
-
-            Instant start = Instant.now();
-
-            FindetteService findetteService = new FindetteService();
-            findetteService.serviceRequest(runProfile);
-
-            Instant end = Instant.now();
-        
-            DurationService durationService = new DurationService();
-            String message = durationService.durationMessage(start, end);
-            System.out.println();
-            System.out.println(message);
-        }
-        catch(UnrecognizedOptionException uoe)
-        {
-            HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("java -jar findette.jar [path]", options);
-        } 
-        catch (ParseException ex) 
-        {
-            Logger.getLogger(Findette.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return new FindetteService();
+    }    
+    
+    public static void main(String [] args) throws Exception
+    {
+        CommandLineInterfaceApplet app = new Findette();
+        app.execute(args);
     }
 
-    private FindetteRunProfile parseRunProfile(final String[] args, Options options) throws ParseException
+    @Override
+    public RunProfile parseRunProfile(final String[] args, Options options) throws ParseException
     {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);

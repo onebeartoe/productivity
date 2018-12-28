@@ -7,11 +7,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.function.BiPredicate;
+import org.onebeartoe.application.AppletService;
 
 /**
  * @author Roberto Marquez
  */
-public class FindetteService 
+public class FindetteService extends AppletService
 {
     public void serviceRequest(FindetteRunProfile runProfile) throws IOException
     {

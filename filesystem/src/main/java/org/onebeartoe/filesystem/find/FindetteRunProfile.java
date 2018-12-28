@@ -1,10 +1,12 @@
 
 package org.onebeartoe.filesystem.find;
 
+import org.onebeartoe.application.RunProfile;
+
 /**
  * @author Roberto Marquez
  */
-public class FindetteRunProfile 
+public class FindetteRunProfile extends RunProfile
 {
     public RunMode mode;
     
