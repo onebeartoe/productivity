@@ -7,8 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.function.BiPredicate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 import org.onebeartoe.application.AppletService;
 import org.onebeartoe.application.RunProfile;
@@ -23,11 +21,17 @@ public class FindetteService extends AppletService
     {
         FindetteRunProfile frp = (FindetteRunProfile) runProfile;
         
+        Stream<Path> paths = null;
+        
+        System.out.println("here are all the files:");
+        
         switch (frp.mode) 
         {
             case SHOW_FILENAMES_WITH_SPECIAL_CHARACTERS:
             {
-                showFilenamesWithSpecialCharacters(frp);
+                paths = showFilenamesWithSpecialCharacters(frp);
+                
+                paths.forEach(System.out::println);
                 
                 break;
             }   
@@ -38,12 +42,10 @@ public class FindetteService extends AppletService
         }
     }
     
-    private void showFilenamesWithSpecialCharacters(FindetteRunProfile runProfile) throws IOException
+    public Stream<Path> showFilenamesWithSpecialCharacters(FindetteRunProfile runProfile) throws IOException
     {
         String inpath = runProfile.inpath;
         Path dir = Paths.get(inpath);
-
-        System.out.println("here are all the files:");
 
         int maxDepth = Integer.MAX_VALUE;
         
@@ -52,9 +54,8 @@ public class FindetteService extends AppletService
         BiPredicate<Path, BasicFileAttributes> matcher = (p, bfa) ->
                 ! p.getFileName().toString().matches(negatedAcceptedChars);
         
-        try( Stream<Path> find = Files.find(dir, maxDepth, matcher) )
-        {    
-            find.forEach(System.out::println);
-        } 
+        Stream<Path> paths = Files.find(dir, maxDepth, matcher);
+                
+        return paths;
     }
 }
