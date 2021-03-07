@@ -15,6 +15,7 @@
     <modules>
 <!-- Move these to modules to the software-development-tools repository. -->
         <module>filesystem</module>
+        <module>resume</module>
     </modules>
 
     <properties>
