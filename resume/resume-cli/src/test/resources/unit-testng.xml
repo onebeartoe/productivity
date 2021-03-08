@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="onebeartoe-productivity-resume-cli-test-suite" parallel="none">
+    <test name="resume-unit-tests">
+        <packages>    
+            <package name="org.onebeartoe.resume.cli"/>            
+        </packages>
+    </test>    
+</suite>
