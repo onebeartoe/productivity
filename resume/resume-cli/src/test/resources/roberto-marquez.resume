@@ -73,6 +73,143 @@ Create continuous delivery infrastructure with Maven and Jenkins.  Automate JEE 
 Develop automated tests for Web applications using Selenium.
 
 
+OBT_RESUME_EXERIENCE
+Direct Hit Data Inc.
+San Antonio, TX
+Senior Software Developer
+3/2012 - 7/2013
+Develop IT solutions for marketing and warehouse fulfillment clients  
+Create business reports from data spanning multiple databases
+Collect requirements and implement systems to automate business processes
+Create automated test frameworks for web based applications
+Maintain legacy systems 
+Apply continuous integration technologies to automate builds, run unit and integration tests, and static analysis of source code
+
+
+OBT_RESUME_EXERIENCE
+Contract Work with Global Insight
+San Antonio, TX
+Web Application Developer/Build Engineer
+10/2011 - 01/2012
+Manage bash shell scripts used for deployment application EAR to WebSphere  
+Create JSPs for HTML forms
+Create automated test frameworks for web based forms using Selenium WebDriver and Jenkins
+Continuous integration efforts including: managing Jenkins for automated builds and static analysis of source code using FindBugs, PMD, and Sonar
+
+
+OBT_RESUME_EXERIENCE
+Contract Work as a Software Developer
+San Antonio, TX
+Mobile and Web Application Developer
+04/2011 - 09/2011
+Work with clients to build web applications and corresponding mobile apps.
+Use Grails to create a web based content management system.  
+Use the Android platform to create mobile applications that retrieve content from the company website.
+Some maintenance work; updating JavaScript, CSS, and HTML
+Create mobile device applications for the Android platform – using Google SDK , Eclipse IDE, Netbeans IDE 
+Prepare and release applications to the Android Market 
+Design and build rich internet applications with JavaFX Script 
+Create server side code to publish XML data for client consumption 
+Deployed several productivity mobile applications for the Android Market 
+Design, implement, build multimedia API applications using JavaFX Script, Tomcat server, Google Android emulator, Java, Hibernate 3 and Spring Source framework for persistence and transactional services
+
+
+OBT_RESUME_EXERIENCE
+Denim Group Ltd.
+San Antonio, TX
+Security Analyst & Java Enterprise Application Developer
+10/2010 – 03/2011
+As a Java developer, worked on the UFC site, handling production issues as well as requirements gathering for new features.  Some maintenance tasks were assigned as well.  The project was managed under Scrum/Agile methodologies and implemented in Grails.
+Helped with documenting the development environment setup for Java, Grails, MySQL, and Subversion
+Integrated Flash video into new web pages
+Created Grails GORM controllers and entity classes for new application logic
+Automated functional tests using Selenium
+As a Security Analyst, conducted White Box assessments of code using Fortify and manual scanning
+Conducted Black Box assessments of websites using Netsparker
+Penetration testing looking for OWASP Top Ten vulnerabilities 
+Created security assessment reports using WebGoat, WebScarab, and Fortify
+
+
+OBT_RESUME_EXERIENCE
+The CME Group Inc.
+San Antonio, TX
+Java Bioinformatics Developer
+06/2010 – 10/2010
+Documented requirements as Trac requests for enhancements 
+Created  Web interface for BioInformatics processing; table pagination, security details, Perl execution hand off  
+Created Applet to Servlet file transfer prototype 
+Added AJAX concepts to an existing Web application
+Implemented a JSP template system used by the company's entire Web application
+Designed and implemented a directory listing service consumed as XML and exposed via HTTP requests
+Designed and implemented the Web application's download service
+Refactored JDBC code into a DAO layer for MySQL database.
+Configured an instance of BioLinux to serve as a dedicated build machine
+Configured Hudson continuous integration to build and package the company's product using Ant and Perl.
+Managed a Subversion repository 
+Integrated Trac issue management with the Subversion repository
+Created documentation for development environment setup
+
+
+OBT_RESUME_EXERIENCE
+SecureInfo Corporation
+San Antonio, TX
+Java Developer/Configuration & Release Manager
+10/2008 – 04/2010
+Create and maintain new functionality in the existing ANT and Maven build scripts for the configuration team 
+Promoted to configuration manager after only 3 months 
+Administrate a Subversion repository for product source code and documentation.  Maintain users and permissions via Apache HTTPD policies.  Handle the branching for different releases of the product 
+Administrate an instance of Fisheye that looks at the company's Subversion repository. 
+Design, code, and test company’s proprietary desktop application. 
+Member of the core RMS Team – SecureInfo Proprietary software development team 
+Design, implementation and unit testing the company proprietary application using core, Swing, and Enterprise Edition Java technologies 
+Manage software development build environments for the company's software products, using AnthillPro and Maven 
+Gain Experience in JSR 168 Portlets technology 
+Introduce newer Java Web Start features (using multiple signed JARs, desktop integration) to the company's main product.
+Other applications used: Java Enterprise Edition, MS SQL Server 2005, Hibernate, Maven, AnthillPro, Jakarta Tomcat, Apache POI
+
+
+OBT_RESUME_EXERIENCE
+Accenture
+Austin, TX
+Java Analyst Programmer
+03/2006 – 06/2007 and 10/2007 – 10/2008
+Maintained the TIERS application for the Health and Human Services Commission 
+Collaborated with team members and functional areas to design and implement service requests
+Design, code, debug, and test modules to modify and maintain a web application build with with J2EE, utilizing EJB, JSP, Servlets as well as XML and JavaScript technologies 
+Owned the process to create and submit SQL queries to a production Oracle relational database environment 
+Troubleshoot and support escalated production issues 
+Created components for MVC architectures implemented with Java Enterprise Edition 
+Coded modules are created using the Spring Framework, JPA for data modeling, Hibernate for data storage, Tomcat, Weblogic 
+Perform configuration management duties for internal projects, using Ant and Maven.
+Set up application environments for testing.  Configured application servers (Apache Tomcat and Websphere) for WAR deployment, installed the MySql server, and created appropriate database schemas 
+Ant scripting to build Java Enterprise compliant applications; WAR files.  This involved coding Ant tasks to compile Java source code, run JUnit tests, and package J2EE compliant WAR files.
+
+
+OBT_RESUME_EXERIENCE
+Tata Consultancy Services
+San Antonio, TX
+Assistant Systems Engineer
+06/2007 – 10/2007
+Worked on development of USAA's on-line banking application 
+Provided design documentation to introduce new features to an existing application in a JEE Web Services centric environment, deployed to IBM WebSphere
+Managed offshore counterpart's work; deliverables include capturing client requirements in a CMMI traceability matrix.  
+Managed, reviewed, and prepared deliverables from offshore counterpart for client verification.  These deliverables include source code, JUnit and functionality test plans 
+Expert at collaborating and effectively communicating issues via teleconferences with offshore team members 
+Deployed JEE Web Applications to a Websphere application server
+
+
+OBT_RESUME_EXERIENCE
+University of Texas San Antonio
+San Antonio, TX                                                      
+Web Application Developer
+10/2005 – 2/2006
+Designed and Developed web-based applications for the school's Distance Learning Center 
+Implemented with MySQL, PHP, MVC, OOP technology 
+Implemented a proof of concept prototype to assist professors in managing on-line course material 
+Lead and mentored a 6-member team of developers  
+Effectively managed the resources of the team to ensure on-time delivery of work.
+
+
 
 OBT_RESUME_EDUCATION
 University of Texas San Antonio
