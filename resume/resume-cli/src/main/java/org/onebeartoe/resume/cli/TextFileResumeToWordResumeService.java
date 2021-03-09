@@ -41,11 +41,6 @@ class TextFileResumeToWordResumeService extends AppletService
         {
             throw new IllegalStateException("The resume infile has no content");
         }
-//else
-//{
-//    System.out.println("allLines = " + allLines);
-//    System.out.println("allLines.size = " + allLines.size() );
-//}            
         
         SectionModes sectionMode = null;
         
@@ -60,7 +55,6 @@ class TextFileResumeToWordResumeService extends AppletService
                 sectionMode = SectionModes.valueOf(line);
                 
                 if(sectionMode == SectionModes.OBT_RESUME_EXERIENCE)
-//                if(resume.workExperiences.size() == 0)
                 {            
                     WorkExperience experience = new WorkExperience();
 
@@ -105,7 +99,6 @@ class TextFileResumeToWordResumeService extends AppletService
         XWPFRun locationRun = locationParagraph.createRun();
         locationRun.setText(resume.candidateLocation);
         locationRun.addBreak();
-//        locationRun.se
                 
         poiDocuments.addBreak(document);
         
@@ -113,14 +106,6 @@ class TextFileResumeToWordResumeService extends AppletService
         contactParagraph.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun contactRun = locationParagraph.createRun();
         contactRun.setText(resume.candidateEmail + " " + resume.candidatSocials);
-        
-        
-//XWPFParagraph p3 = document.createParagraph();
-////Set strike for third paragraph and capitalization
-//XWPFRun r3 = p3.createRun();
-//r3.setStrikeThrough(true);
-//r3.setCapitalized(true);
-//r3.setText("The third paragraph is strike through and is capitalized");        
     }
 
     private void experienceToDocx(Resume resume, XWPFDocument document) 
@@ -149,15 +134,6 @@ class TextFileResumeToWordResumeService extends AppletService
             poiDocuments.edgeAlignedText(titleStartEndDatePara, experience.title, experience.startEndDate);
 
             poiDocuments.unorderedList(document, experience.qualifications);
-
-//            for(String qualification : experience.qualifications)
-//            {
-//                XWPFParagraph qualificationParagraph = document.createParagraph();
-//
-//                XWPFRun qualificationRun = qualificationParagraph.createRun();                        
-//
-//                qualificationRun.setText(qualification);
-//            }
         }
     }    
     
@@ -297,14 +273,7 @@ class TextFileResumeToWordResumeService extends AppletService
             // no operation
         }
         else
-        {        
-//            if(resume.workExperiences.size() == 0)
-//            {            
-//                WorkExperience experience = new WorkExperience();
-//                
-//                resume.workExperiences.add(experience);
-//            }
-            
+        {            
             int i = resume.workExperiences.size() - 1;
             
             WorkExperience currentExperience = resume.workExperiences.get(i);                        
