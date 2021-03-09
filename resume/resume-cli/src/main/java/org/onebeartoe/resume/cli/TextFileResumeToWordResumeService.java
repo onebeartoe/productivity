@@ -39,7 +39,7 @@ class TextFileResumeToWordResumeService extends AppletService
         
         if(allLines.size() == 0)
         {
-            throw new IllegalStateException("The resume infile has no content");
+            throw new IllegalStateException("The resume infile has no content.");
         }
         
         SectionModes sectionMode = null;
@@ -112,7 +112,7 @@ class TextFileResumeToWordResumeService extends AppletService
     {
         XWPFParagraph paragraph = document.createParagraph();
         XWPFRun titleRun = paragraph.createRun();
-        paragraph.createRun().addBreak();
+//titleRun.addBreak();
         titleRun.setSmallCaps(true);
         titleRun.setText("Experience");       
         paragraph.setBorderBottom(Borders.SINGLE);
