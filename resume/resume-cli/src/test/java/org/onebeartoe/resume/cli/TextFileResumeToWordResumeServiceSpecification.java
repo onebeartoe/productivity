@@ -4,7 +4,6 @@ package org.onebeartoe.resume.cli;
 import java.io.File;
 import static org.testng.AssertJUnit.assertTrue;
 import org.testng.annotations.Test;
-//import org.testng.annotations.Test;
 
 /**
  *

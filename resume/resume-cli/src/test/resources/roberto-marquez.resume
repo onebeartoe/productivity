@@ -1,5 +1,28 @@
 
 OBT_RESUME_CANDIDATE
 Roberto Marquez
-onebeartoe at gmail .com
+San Antonio, TX
+onebeartoe(AT)gmail.com
+github.com/onebeartoe
+
+OBT_RESUME_SUMMARY
+Roberto has 14+ years of I.T. experience in designing, developing, testing, and supporting software applications; serving as an object-oriented application developer and automation practitioner. 
+
+Roberto also specializes in continuous integration and delivery, automated unit testing and code quality analysis, and automated Web testing.
+
+He has practical experience in Java Enterprise Edition development and operations automation. 
+
+He has great communication, presentation, and troubleshooting skills.
+
+OBT_RESUME_EXERIENCE
+Contract with USAA through SoftWorld
+San Antonio, TX
+Senior Software Developer
+1/2019 - 4/2019
+Develop JEE microservices/applications using the Spring Boot
+Prepare User Stories for team review and acceptance
+Create business validation logic for credit card application origination
+Configure Gitlab to run integration tests against the application deployed by the pipeline to an Linux OpenShift pod using Gradle build configuration.
+Provide mentoring/guidance to junior team members on remediation of vulnerabilities and code smells found by static analysis tools (SonarQube)
+
 
