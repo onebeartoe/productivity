@@ -21,11 +21,15 @@ public class Resume
 
     public List<WorkExperience> workExperiences;
     
+    public List<Schooling> educations;
+    
     public Resume()
     {
         summary = new ArrayList();
         
         workExperiences = new ArrayList();
+        
+        educations = new ArrayList();
     }       
     
     public void addSummaryItem(String line) 

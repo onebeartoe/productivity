@@ -26,3 +26,58 @@ Configure Gitlab to run integration tests against the application deployed by th
 Provide mentoring/guidance to junior team members on remediation of vulnerabilities and code smells found by static analysis tools (SonarQube)
 
 
+OBT_RESUME_EXERIENCE
+Contract with Harland-Clarke through ApexSystems
+San Antonio, TX
+Senior Software Developer
+9/2018 - 11/2018
+Configure deploy jobs for Web applications and an accompanying Java Web Start application.
+Create and maintain Jenkinsfile scripts to compile, package and scan static source code.
+Coordinate with operations to deploy the WARs to a stage environment.
+Support production deployments of WAR applications.
+Add credentials/security to continuous integration and delivery infrastructure.
+Gather requirements and prepare RFC documents; Requirements, Flowcharts, time and effort documentation, test procedures, Release notes.
+Convert free form Java projects into Maven managed builds.
+Convert Java 5 applications to work with Java 8.
+Troubleshoot IVR systems and use logs to find the root cause of bugs in production.
+Update JEE application code to correct bugs.
+Create profiles for each environment that hosts an application.
+Coach team members new to CI/CD on how to create, run, and diagnose builds.
+
+
+OBT_RESUME_EXERIENCE
+Contract with IBC through TechQuarry
+San Antonio, TX
+Senior Software Developer
+2/2018 - 7/2018
+Configure source code repositories for multiple users.
+Establish a Unix host to serve continuous application builds.
+Establish a continuous integration and delivery host to scan and analyze the project’s code base.
+Establish a host to browse changes in the source code.
+Architect a framework for unit testing and measurements using TestNG and Jacoco
+Architect a quality assurance framework for applications; regression testing.
+Create a framework to identify defects in data and implement business logic to not send said defects.
+Develop features for business applications; created a consistent method for accessing database and logging resources.
+Mentor new Java developers on coding conventions.
+Illustrate usages of the MVC and separation of concerns design patterns.
+Provide assistance with static code analysis remediation.
+
+
+OBT_RESUME_EXERIENCE
+CWT Sato Travel
+San Antonio, TX
+Senior Software Developer
+7/2013 - 8/2017
+Develop, maintain, and support software solutions for the leading military and government travel agency.  Work extensively with Java Enterprise Edition technologies to provide a safe and secure Web environment, for the travel management application.
+Create continuous delivery infrastructure with Maven and Jenkins.  Automate JEE deployments to Web application container; WebLogic.
+Develop automated tests for Web applications using Selenium.
+
+
+
+OBT_RESUME_EDUCATION
+University of Texas San Antonio
+San Antonio, TX
+Computer Science
+10/2005 – 2/2006
+Some College
+

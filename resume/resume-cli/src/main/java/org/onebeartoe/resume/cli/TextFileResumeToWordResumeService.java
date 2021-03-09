@@ -60,6 +60,12 @@ class TextFileResumeToWordResumeService extends AppletService
 
                     resume.workExperiences.add(experience);
                 }
+                else if(sectionMode == SectionModes.OBT_RESUME_EDUCATION)
+                {
+                    Schooling schooling = new Schooling();
+                    
+                    resume.educations.add(schooling);
+                }
             }
             else
             {
@@ -121,17 +127,25 @@ class TextFileResumeToWordResumeService extends AppletService
         
         for(WorkExperience experience : resume.workExperiences)
         {
-            // company name and location
-            ParagraphProfile leftTextProile = new ParagraphProfile();
-            leftTextProile.text = experience.comanyName;
+            // company name and location row
+            ParagraphProfile compnayNameTextProile = new ParagraphProfile();
+            compnayNameTextProile.bold = true;
+            compnayNameTextProile.smallCaps = true;
+            compnayNameTextProile.text = experience.comanyName;
 
-            ParagraphProfile rightTextProfile = new ParagraphProfile();
-            rightTextProfile.text = experience.location;
-            poiDocuments.edgeAlignedText(document, leftTextProile, rightTextProfile);
+            ParagraphProfile locationTextProfile = new ParagraphProfile();
+            locationTextProfile.text = experience.location;
+            locationTextProfile.smallCaps = true;
+            poiDocuments.edgeAlignedText(document, compnayNameTextProile, locationTextProfile);
 
-            // title and start/end date
-            XWPFParagraph titleStartEndDatePara = document.createParagraph();
-            poiDocuments.edgeAlignedText(titleStartEndDatePara, experience.title, experience.startEndDate);
+            // title and start/end date row
+            ParagraphProfile titleProile = new ParagraphProfile();
+            titleProile.smallCaps = true;
+            titleProile.text = experience.title;            
+            ParagraphProfile startEndProfile = new ParagraphProfile();
+            startEndProfile.smallCaps = true;
+            startEndProfile.text = experience.startEndDate;
+            poiDocuments.edgeAlignedText(document, titleProile, startEndProfile);
 
             poiDocuments.unorderedList(document, experience.qualifications);
         }
@@ -177,9 +191,13 @@ class TextFileResumeToWordResumeService extends AppletService
             }
             case OBT_RESUME_EXERIENCE:
             {
-
-                
                 processOneWorkExperienceSectionLine(resume, line);
+                
+                break;
+            }
+            case OBT_RESUME_EDUCATION:
+            {
+                processOneEducationSectionLine(resume, line);
                 
                 break;
             }
@@ -209,7 +227,7 @@ class TextFileResumeToWordResumeService extends AppletService
         
         candidateToDocx(resume, document);
     
-        boolean showSummary = true;
+        boolean showSummary = false;
         
         if(showSummary)
         {
@@ -217,6 +235,8 @@ class TextFileResumeToWordResumeService extends AppletService
         }
   
         experienceToDocx(resume, document);
+        
+        educationToDocx(resume, document);
         
         return document;
     }
@@ -301,6 +321,81 @@ class TextFileResumeToWordResumeService extends AppletService
                 // assume it is a qualification
                 currentExperience.qualifications.add(trimmedLine);
             }
+        }
+    }
+
+    private void processOneEducationSectionLine(Resume resume, String line) 
+    {
+        if( line == null || line.trim().isBlank() )
+        {
+            // no operation
+        }
+        else
+        {
+            int i = resume.educations.size() - 1;
+
+            Schooling currentExperience = resume.educations.get(i);                        
+
+            String trimmedLine = line.trim();
+
+            if( currentExperience.schoolName == null)
+            {
+                currentExperience.schoolName = trimmedLine;
+            }
+            else if( currentExperience.location == null )
+            {
+                currentExperience.location = trimmedLine;
+            }
+            else if (currentExperience.major == null)
+            {
+                currentExperience.major = trimmedLine;
+            }
+            else if( currentExperience.startEndDate == null)
+            {
+                currentExperience.startEndDate = trimmedLine;
+            }
+            else
+            {
+                // assume it is a summary
+                currentExperience.summaries.add(trimmedLine);
+            }
+        }
+    }
+
+    private void educationToDocx(Resume resume, XWPFDocument document) 
+    {
+        XWPFParagraph paragraph = document.createParagraph();
+        XWPFRun titleRun = paragraph.createRun();
+//titleRun.addBreak();
+        titleRun.setSmallCaps(true);
+        titleRun.setText("Education");       
+        paragraph.setBorderBottom(Borders.SINGLE);
+                
+        System.out.println("schooling count = " + resume.educations.size() );
+        
+        for(Schooling schooling : resume.educations)
+        {
+            // company name and location row
+            ParagraphProfile compnayNameTextProile = new ParagraphProfile();
+            compnayNameTextProile.bold = true;
+            compnayNameTextProile.smallCaps = true;
+            compnayNameTextProile.text = schooling.schoolName;
+
+            ParagraphProfile locationTextProfile = new ParagraphProfile();
+            locationTextProfile.text = schooling.location;
+            locationTextProfile.smallCaps = true;
+            poiDocuments.edgeAlignedText(document, compnayNameTextProile, locationTextProfile);
+
+            // title and start/end date row
+            ParagraphProfile titleProile = new ParagraphProfile();
+            titleProile.smallCaps = true;
+            titleProile.text = schooling.major;  
+            ParagraphProfile startEndProfile = new ParagraphProfile();
+            startEndProfile.smallCaps = true;
+            startEndProfile.text = schooling.startEndDate;
+            poiDocuments.edgeAlignedText(document, titleProile, startEndProfile);
+
+            poiDocuments.unorderedList(document, schooling.summaries);
         }
     }
 }
